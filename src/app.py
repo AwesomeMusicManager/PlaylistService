@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_restful import Resource, Api
-from .controllers.blueprint import setup_blueprint
+from controllers.blueprint import setup_blueprint
 from flask_swagger_ui import get_swaggerui_blueprint
 
 app = Flask(__name__)

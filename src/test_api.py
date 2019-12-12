@@ -1,6 +1,6 @@
-import json
 import unittest
-from src.app import app
+import app
+
 
 class PlaylistService(unittest.TestCase):
     def setUp(self):
