@@ -11,4 +11,7 @@ waitress
 gunicorn
 pytest
 flask_swagger_ui
-flask_testing
+pygelf
+json-logging-py
+python3-logstash
+CMRESHandler
