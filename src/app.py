@@ -34,4 +34,4 @@ app.register_blueprint(SWAGGERUI_BLUEPRINT, url_prefix=SWAGGER_URL)
 app.register_blueprint(setup_blueprint())
 
 if __name__ == '__main__':
-    app.run(debug=True, port=4000)
+    app.run(debug=True, port=4500)
