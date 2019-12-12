@@ -47,6 +47,7 @@ jobs:
       - run:
           name: run tests
           command: pytest
+          working_directory: .
 
       - store_artifacts:
           path: test-reports
