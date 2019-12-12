@@ -9,3 +9,4 @@ opencensus-ext-gevent==0.1.0
 opencensus==0.7.0
 waitress
 gunicorn
+pytest
