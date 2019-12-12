@@ -1,13 +1,14 @@
-from urllib import request
+import requests
 from flask_restful import Resource, reqparse
-from flask import jsonify
+from flask import jsonify, request
 
 class CreatePlaylistWithName(Resource):
     def get(self):
-        parser = reqparse.RequestParser()
-        parser.add_argument("withName", type=str, required=True)
-        args = parser.parse_args()
+        get_musics = requests.get(
+            "https://api.vagalume.com.br/search.excerpt?q={}&limit=5".format(request.args.get('withName')))
 
-        # get_musics = request.get("apirubao/args['withName']")
-        get_musics = [{"name": "Even Flow"}, {"name": "bellyache"}, {"name": "Madness"}]
-        return jsonify(get_musics)
+        response = []
+        for music in get_musics.json()['response']['docs']:
+            response.append({'title': music['title'], 'band': music['band']})
+
+        return jsonify(response)
