@@ -10,3 +10,5 @@ opencensus==0.7.0
 waitress
 gunicorn
 pytest
+flask_swagger_ui
+flask_testing

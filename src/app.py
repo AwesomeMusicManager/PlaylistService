@@ -1,9 +1,24 @@
 from flask import Flask
 from flask_restful import Resource, Api
-from controllers.create_playlist import CreatePlaylistWithName
+from .controllers.create_playlist import CreatePlaylistWithName
+from flask_swagger_ui import get_swaggerui_blueprint
 
 app = Flask(__name__)
 api = Api(app)
+
+app = Flask(__name__, static_url_path='/static')
+
+SWAGGER_URL = '/swagger'
+API_URL = '/swagger.json'
+SWAGGERUI_BLUEPRINT = get_swaggerui_blueprint(
+    SWAGGER_URL,
+    API_URL,
+    config={
+        'app_name': "Seans-Python-Flask-REST-Boilerplate"
+    }
+)
+
+app.register_blueprint(SWAGGERUI_BLUEPRINT, url_prefix=SWAGGER_URL)
 
 api.add_resource(CreatePlaylistWithName, '/api/v1/create-playlist')
 
