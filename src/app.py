@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_restful import Resource, Api
-from .controllers.create_playlist import CreatePlaylistWithName
+from .controllers.blueprint import setup_blueprint
 from flask_swagger_ui import get_swaggerui_blueprint
 
 app = Flask(__name__)
@@ -19,8 +19,7 @@ SWAGGERUI_BLUEPRINT = get_swaggerui_blueprint(
 )
 
 app.register_blueprint(SWAGGERUI_BLUEPRINT, url_prefix=SWAGGER_URL)
-
-api.add_resource(CreatePlaylistWithName, '/api/v1/create-playlist')
+app.register_blueprint(setup_blueprint())
 
 if __name__ == '__main__':
     app.run(debug=True)
